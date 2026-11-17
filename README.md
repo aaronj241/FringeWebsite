@@ -34,4 +34,4 @@ The workflow builds and publishes the site after each push to `main`. It reads t
 
 Add a Markdown entry under `src/content/projects/` to publish another project. Use a kebab-case filename for its URL, and place its images in `src/assets/projects/`.
 
-The contact form opens a prefilled draft in the visitor’s email app. The contact page also includes direct email and phone links.
+The contact form previews the confirmation screen locally in the browser. It has no delivery integration. The contact page also includes direct email and phone links.

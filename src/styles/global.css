@@ -283,7 +283,32 @@ p { line-height: 1.55; }
 .contact-layout { display: grid; grid-template-columns: 1.14fr 1fr; gap: clamp(1.5rem, 6vw, 6rem); }
 .contact-details dd { font-size: 1.06rem; font-weight: 700; overflow-wrap: anywhere; }
 .contact-details a, .case-details a { text-underline-offset: .17em; }
-.contact-form { display: grid; gap: 1.2rem; align-content: start; padding: clamp(1.25rem, 3.4vw, 2.5rem); background: var(--wash); }
+.contact-form, .contact-success {
+  display: grid;
+  gap: 1.2rem;
+  padding: clamp(1.25rem, 3.4vw, 2.5rem);
+  background: var(--wash);
+}
+.contact-form { align-content: start; }
+.contact-success {
+  min-height: 20rem;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.contact-success-icon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #d6f1df;
+  color: #15633d;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.contact-success h2 { font-size: clamp(1.65rem, 4vw, 2.25rem); letter-spacing: -.045em; }
+.contact-success p { margin-top: .4rem; color: var(--dim); }
 .form-field { display: grid; gap: .45rem; }
 .form-field label { font-size: .92rem; font-weight: 700; }
 .form-field input, .form-field textarea {
@@ -296,7 +321,6 @@ p { line-height: 1.55; }
   color: var(--ink);
 }
 .form-field textarea { resize: vertical; }
-.form-hint { margin-top: -.6rem; color: var(--dim); font-size: .86rem; }
 
 @media (max-width: 700px) {
   :root { --header-height: 4rem; }
