@@ -1,0 +1,25 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { projectCategories } from '../data/site';
+import { getProjects } from '../data/projects';
+
+interface Props {
+  category?: (typeof projectCategories)[number];
+}
+
+const { category } = Astro.props;
+const projects = await getProjects();
+const visibleProjects = category
+  ? projects.filter(({ data }) => data.categories.includes(category.id))
+  : projects;
+---
+
+<section class="container page-section">
+  {category && <a class="text-link back-link" href="/portfolio/"><span aria-hidden="true">←</span> All projects</a>}
+  <header class="page-heading">
+    <h1>{category?.title ?? 'Highlighted Work'}</h1>
+  </header>
+  <div class="project-list">
+    {visibleProjects.map((project) => <ProjectCard project={project} heading="h2" />)}
+  </div>
+</section>

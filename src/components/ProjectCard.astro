@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { projectCategories } from '../data/site';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  heading?: 'h2' | 'h3';
+}
+
+const { project, heading: Heading = 'h3' } = Astro.props;
+const { title, description, categories, cover } = project.data;
+const serviceNames = projectCategories.filter(({ id }) => categories.includes(id)).map(({ title }) => title);
+---
+
+<article class="project-card">
+  <a class="project-link" href={`/portfolio/${project.id}/`}>
+    <div class="project-media">
+      <Image src={cover.image} alt={cover.alt} widths={[320, 480, 720, 960]} sizes="(max-width: 540px) 90vw, (max-width: 1100px) 27vw, 320px" />
+    </div>
+    <div class="project-info">
+      <div>
+        <p class="project-categories">{serviceNames.join(' · ')}</p>
+        <Heading class="project-title">{title}</Heading>
+        <p class="project-description">{description}</p>
+      </div>
+      <span class="project-arrow" aria-hidden="true">↗</span>
+    </div>
+  </a>
+</article>

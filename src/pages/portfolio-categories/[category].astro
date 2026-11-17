@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioListing from '../../components/PortfolioListing.astro';
+import { projectCategories } from '../../data/site';
+
+export const getStaticPaths = (() =>
+  projectCategories.map((category) => ({
+    params: { category: category.id },
+    props: { category },
+  }))) satisfies GetStaticPaths;
+
+const { category } = Astro.props;
+---
+
+<BaseLayout title={category.title} description={`Browse Fringe Design’s ${category.title.toLowerCase()} projects.`}>
+  <PortfolioListing category={category} />
+</BaseLayout>
