@@ -2,6 +2,7 @@
 import ProjectCard from './ProjectCard.astro';
 import { projectCategories } from '../data/site';
 import { getProjects } from '../data/projects';
+import { sitePath } from '../data/site-path';
 
 interface Props {
   category?: (typeof projectCategories)[number];
@@ -15,7 +16,7 @@ const visibleProjects = category
 ---
 
 <section class="container page-section">
-  {category && <a class="text-link back-link" href="/portfolio/"><span aria-hidden="true">←</span> All projects</a>}
+  {category && <a class="text-link back-link" href={sitePath('/portfolio/')}><span aria-hidden="true">←</span> All projects</a>}
   <header class="page-heading">
     <h1>{category?.title ?? 'Highlighted Work'}</h1>
   </header>

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/fringe-logo-light.png';
 import { site } from '../data/site';
+import { sitePath } from '../data/site-path';
 
 interface Props {
   showCallToAction: boolean;
@@ -14,14 +15,14 @@ const { showCallToAction } = Astro.props;
   <section class="contact-band" aria-labelledby="contact-band-heading">
     <div class="container contact-band-inner">
       <h2 id="contact-band-heading">Let’s build something together.</h2>
-      <a class="button button-light" href="/contact-us/">Start a project <span aria-hidden="true">↗</span></a>
+      <a class="button button-light" href={sitePath('/contact-us/')}>Start a project <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 )}
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <a class="brand" href="/" aria-label="Fringe Design home">
+      <a class="brand" href={sitePath('/')} aria-label="Fringe Design home">
         <Image src={logo} alt="Fringe Design" width={106} height={47} />
       </a>
       <span>{site.location}</span>

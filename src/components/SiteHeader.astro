@@ -2,21 +2,25 @@
 import { Image } from 'astro:assets';
 import darkLogo from '../assets/brand/fringe-logo-dark.png';
 import lightLogo from '../assets/brand/fringe-logo-light.png';
+import { sitePath } from '../data/site-path';
 
 const path = Astro.url.pathname;
-const isHome = path === '/';
-const portfolioActive = path.startsWith('/portfolio/') || path.startsWith('/portfolio-categories/');
+const home = sitePath('/');
+const portfolio = sitePath('/portfolio/');
+const contact = sitePath('/contact-us/');
+const isHome = path === home;
+const portfolioActive = path.startsWith(portfolio) || path.startsWith(sitePath('/portfolio-categories/'));
 ---
 
 <header class:list={['site-header', { 'site-header-home': isHome }]}>
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Fringe Design home">
+    <a class="brand" href={home} aria-label="Fringe Design home">
       <Image src={isHome ? lightLogo : darkLogo} alt="Fringe Design" widths={[76, 106, 152, 212]} sizes="(max-width: 700px) 76px, 106px" loading="eager" />
     </a>
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="/#services">Services</a>
-      <a href="/portfolio/" class:list={{ 'is-active': portfolioActive }} aria-current={path === '/portfolio/' ? 'page' : undefined}>Our Work</a>
-      <a href="/contact-us/" class="header-contact" aria-current={path === '/contact-us/' ? 'page' : undefined}>Contact <span aria-hidden="true">↗</span></a>
+      <a href={`${home}#services`}>Services</a>
+      <a href={portfolio} class:list={{ 'is-active': portfolioActive }} aria-current={path === portfolio ? 'page' : undefined}>Our Work</a>
+      <a href={contact} class="header-contact" aria-current={path === contact ? 'page' : undefined}>Contact <span aria-hidden="true">↗</span></a>
     </nav>
   </div>
 </header>

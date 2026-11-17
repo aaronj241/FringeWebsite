@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import space from '../assets/brand/space.jpg';
 import { services } from '../data/site';
 import { getProjects } from '../data/projects';
+import { sitePath } from '../data/site-path';
 
 const projects = await getProjects();
 ---
@@ -17,7 +18,7 @@ const projects = await getProjects();
       <h1 id="hero-heading">At Fringe, we make<br /> the complex <em>simple.</em></h1>
       <p class="hero-description">We design websites, logos, and promotional products that help brands stand out.</p>
       <div class="hero-actions">
-        <a class="button button-light" href="/contact-us/">Start a project <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href={sitePath('/contact-us/')}>Start a project <span aria-hidden="true">↗</span></a>
         <a class="text-link" href="#services">Explore services <span aria-hidden="true">↓</span></a>
       </div>
     </div>

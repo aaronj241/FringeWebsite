@@ -11,6 +11,14 @@ npm run dev
 
 Run `npm run build` to generate the site in `dist/`. Run `npm run preview` to serve the production build locally.
 
+## GitHub Pages
+
+1. In the GitHub repository, open **Settings → Pages** and select **GitHub Actions** as the publishing source.
+2. Commit the workflow and site changes, then push to `main`.
+3. Open **Actions → Deploy to GitHub Pages** to see the deployment status and published URL. You can also run the workflow manually from `main`.
+
+The workflow builds and publishes the site after each push to `main`. It reads the site address and base path from GitHub Pages so internal links work at the repository URL or at a configured custom domain.
+
 ## Project structure
 
 | Path | Contents |
